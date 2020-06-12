@@ -1,5 +1,15 @@
 from Client import Client
 from Company import *
+""" from app import app """
+from pymongo import MongoClient
+
+MONGO_URI = 'mongodb://localhost'
+client = MongoClient(MONGO_URI)
+
+db = client['company_register']
+collection1 = db['company']
+collection2 = db['client']
+
 import sys
 
 def menu():
@@ -23,7 +33,7 @@ def newCompany():
     direction_e = input("Introduce la Dirección: ")
     clients = []
     newCompany = Company(name_e, RFC_e, direction_e, clients)
-
+    collection1.insert_one({"RFC": RFC_e, "name": name_e, "Address": direction_e })
     return newCompany
 
 

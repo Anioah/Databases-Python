@@ -15,7 +15,7 @@ import sys
 
 def menu():
 
-    print("\n Menú \n \n 1) Alta de Empresa \n 2) Mostrar datos empresas \n 3) Mostrar datos clientes \n 4) Editar datos \n 5) Eliminar Empresa \n 6) Eliminar Cliente \n 7) Salir")
+    print("\n Menú \n \n 1) Alta de Empresa \n 2) Mostrar datos empresas \n 3) Mostrar datos clientes \n 4) Editar Empresa \n 5) Editar Cliente \n 6) Eliminar Empresa \n 7) Eliminar Cliente \n 8) Salir")
     menu = int(input("Selecciona una opción: "))
     return menu
 
@@ -97,7 +97,93 @@ elif opc is 3:
         print("\n No existen registros ")
         opc=menu()
 
+elif opc is 4:
+    print("Ingrese el nombre de la empresa a modificar: ")
+    find_name = str(input())
+    print("Desea cambiar su RFC?(s/n)")
+    opcion = str(input())
+    if opcion == 's':
+        update_rfc = str(input("Ingrese el nuevo RFC: "))
+        if newClient!="":
+            collection1.update_one({
+                "name": find_name
+            }, {
+                "$set":{
+                    "RFC": update_rfc
+                }
+            })
+    elif opcion == 'n':
+        print("Desea cambiar el nombre de la empresa?(s/n): ")
+        opcion = str(input())
+        if opcion == 's':
+            update_name = str(input("Ingrese el nuevo nombre: "))
+            if newClient!="":
+                collection1.update_one({
+                    "name": find_name
+                }, {
+                    "$set":{
+                        "name": update_name
+                    }
+                })
+    elif opcion == 'n':
+        print("Desea cambiar el domicilio de la empresa?(s/n): ")
+        opcion = str(input())
+        if opcion == 's':
+            update_address = str(input("Ingrese el nuevo domicilio: "))
+            if newClient!="":
+                collection1.update_one({
+                    "name": find_name
+                }, {
+                    "$set":{
+                        "Address": update_address
+                    }
+                })
+
 elif opc is 5:
+    print("Ingrese el nombre del cliente a modificar: ")
+    find_name = str(input())
+    print("Desea cambiar su RFC?(s/n)")
+    opcion = str(input())
+    if opcion == 's':
+        update_rfc = str(input("Ingrese el nuevo RFC: "))
+        if newClient!="":
+            collection1.update_one({
+                "Name": find_name
+            }, {
+                "$set":{
+                    "RFC": update_rfc
+                }
+            })
+    elif opcion == 'n':
+        print("Desea cambiar el nombre del cliente?(s/n): ")
+        opcion = str(input())
+        if opcion == 's':
+            update_name = str(input("Ingrese el nuevo nombre: "))
+            if newClient!="":
+                collection1.update_one({
+                    "Name": find_name
+                }, {
+                    "$set":{
+                        "Name": update_name
+                    }
+                })
+    elif opcion == 'n':
+        print("Desea cambiar el domicilio del cliente?(s/n): ")
+        opcion = str(input())
+        if opcion == 's':
+            update_address = str(input("Ingrese el nuevo domicilio: "))
+            if newClient!="":
+                collection1.update_one({
+                    "Name": find_name
+                }, {
+                    "$set":{
+                        "Address": update_address
+                    }
+                })
+
+
+
+elif opc is 6:
 
     print("Ingrese el nombre de la empresa a eliminar: ")
     delete_name = str(input())
@@ -112,7 +198,7 @@ elif opc is 5:
         print("\n Menú de registro \n \n 1) Nueva Empresa\n 2) Mostrar datos de clientes \n 3) Fin")
         opc = input("\n Elije una opción: ")
 
-elif opc is 6:
+elif opc is 7:
 
     print("Ingrese RFC del cliente a eliminar: ")
     delete_rfc = str(input())
@@ -124,7 +210,7 @@ elif opc is 6:
         menu()
         opc = input("\n Elije una opción: ")
     
-elif opc is 7:
+elif opc is 8:
         print("Programa finalizado ")
         sys.exit()
 

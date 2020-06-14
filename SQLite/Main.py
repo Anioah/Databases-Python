@@ -2,6 +2,10 @@ from Client import Client
 from Company import *
 import sys
 
+import sqlite3
+
+con = sqlite3.connect('Empresas.db')
+
 def menu():
     print("\n Menú \n \n 1) Alta de Empresa \n 2) Mostrar datos \n 3) Salir")
     menu = input("\n Elije una opción: ")
